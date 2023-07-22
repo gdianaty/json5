@@ -518,11 +518,11 @@ inline error parser::parse_identifier( detail::string_offset &result )
 
 	while ( !eof() )
 	{
-		string_buffer_add( next() );
-
-		int ch = peek();
-		if ( !isalpha( ch ) && !isdigit( ch ) && ch != '_' )
-			break;
+	    string_buffer_add( next() );
+	
+	    int ch = peek();
+	    if ((!isString && !isalpha(ch) && !isdigit(ch) && ch != '_' ) || (isString && ch == firstCh))
+		break;
 	}
 
 	if ( isString && firstCh != next() ) // Consume '\'' or '"'
