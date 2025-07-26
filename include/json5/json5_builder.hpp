@@ -27,6 +27,8 @@ public:
 	value &operator[]( detail::string_offset keyOffset );
 	value &operator[]( std::string_view key ) { return ( *this )[string_buffer_add( key )]; }
 
+	const std::string& get_string_buffer() const { return _doc._strings; };
+
 protected:
 	void reset() noexcept;
 
